@@ -1,0 +1,141 @@
+/* pages/index/index.wxss */
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 120rpx 40rpx;
+}
+
+.logo {
+  margin-bottom: 100rpx;
+}
+
+.title {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: white;
+}
+
+.buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30rpx;
+}
+
+.btn-primary, .btn-secondary {
+  width: 100%;
+  height: 100rpx;
+  border-radius: 50rpx;
+  font-size: 36rpx;
+  font-weight: bold;
+  border: none;
+}
+
+.btn-primary {
+  background: white;
+  color: #667eea;
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2rpx solid white;
+}
+
+.recent-rooms {
+  margin-top: 60rpx;
+  width: 100%;
+}
+
+.section-title {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.room-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.room-item {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 30rpx;
+  border-radius: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+}
+
+.room-date {
+  font-size: 24rpx;
+  opacity: 0.7;
+}
+
+/* 弹窗 */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal-content {
+  background: #667eea;
+  padding: 40rpx;
+  border-radius: 24rpx;
+  width: 560rpx;
+}
+
+.modal-title {
+  color: white;
+  font-size: 36rpx;
+  font-weight: bold;
+  display: block;
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+
+.modal-input {
+  background: white;
+  height: 80rpx;
+  border-radius: 16rpx;
+  padding: 0 24rpx;
+  font-size: 32rpx;
+  margin-bottom: 30rpx;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 20rpx;
+}
+
+.modal-btn {
+  flex: 1;
+  height: 80rpx;
+  border-radius: 16rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  border: none;
+}
+
+.modal-btn.cancel {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.modal-btn.confirm {
+  background: white;
+  color: #667eea;
+}

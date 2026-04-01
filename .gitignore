@@ -1,0 +1,20 @@
+# OpenClaw 工作文件
+.openclaw/
+AGENTS.md
+BOOTSTRAP.md
+HEARTBEAT.md
+IDENTITY.md
+SOUL.md
+TOOLS.md
+USER.md
+
+# 微信开发者工具
+.project.private.config.json
+.miniprogram/
+
+# Node
+node_modules/
+package-lock.json
+
+# 构建产物
+miniprogram_npm/

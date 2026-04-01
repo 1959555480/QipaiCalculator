@@ -1,0 +1,33 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <view class="logo">
+    <text class="title">🃏 棋牌计分助手</text>
+  </view>
+
+  <view class="buttons">
+    <button class="btn-primary" bindtap="createRoom">创建房间</button>
+    <button class="btn-secondary" bindtap="showJoinModal">加入房间</button>
+  </view>
+
+  <view class="recent-rooms" wx:if="{{recentRooms.length > 0}}">
+    <text class="section-title">最近房间</text>
+    <view class="room-list">
+      <view class="room-item" wx:for="{{recentRooms}}" wx:key="id" bindtap="quickJoin" data-roomid="{{item.id}}">
+        <text>房间号: {{item.id}}</text>
+        <text class="room-date">{{item.date}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 加入房间弹窗 -->
+  <view class="modal" wx:if="{{showModal}}">
+    <view class="modal-content">
+      <text class="modal-title">加入房间</text>
+      <input class="modal-input" placeholder="请输入房间号" type="number" maxlength="4" bindinput="onJoinInput"/>
+      <view class="modal-buttons">
+        <button class="modal-btn cancel" bindtap="closeModal">取消</button>
+        <button class="modal-btn confirm" bindtap="joinRoom">确定</button>
+      </view>
+    </view>
+  </view>
+</view>

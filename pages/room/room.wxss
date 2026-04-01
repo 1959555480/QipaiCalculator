@@ -1,0 +1,280 @@
+/* pages/room/room.wxss */
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 40rpx;
+}
+
+.room-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 30rpx;
+  border-radius: 20rpx;
+  margin-bottom: 40rpx;
+}
+
+.room-id {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: white;
+}
+
+.room-status {
+  background: #4caf50;
+  color: white;
+  padding: 10rpx 20rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+}
+
+/* 房主设置 */
+.settings {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 30rpx;
+  border-radius: 20rpx;
+  margin-bottom: 40rpx;
+}
+
+.setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.setting-label {
+  color: white;
+  font-size: 28rpx;
+}
+
+.players-section {
+  margin-bottom: 40rpx;
+}
+
+.section-title {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.players-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.player-card {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 30rpx;
+  border-radius: 20rpx;
+}
+
+.player-card.owner {
+  border: 2rpx solid #ffd700;
+}
+
+.player-info {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  margin-bottom: 16rpx;
+}
+
+.player-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.player-avatar-emoji {
+  font-size: 60rpx;
+  flex-shrink: 0;
+}
+
+.player-name, .player-name-input {
+  color: white;
+  font-size: 32rpx;
+  flex: 1;
+}
+
+.player-name-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1rpx solid rgba(255,255,255,0.5);
+  padding: 8rpx 0;
+}
+
+.owner-badge {
+  background: #ffd700;
+  color: #333;
+  padding: 6rpx 16rpx;
+  border-radius: 12rpx;
+  font-size: 22rpx;
+}
+
+.player-score {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.score-label {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 26rpx;
+}
+
+.score-value {
+  color: white;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+.actions {
+  margin-bottom: 40rpx;
+}
+
+.btn-score {
+  width: 100%;
+  height: 100rpx;
+  border-radius: 50rpx;
+  font-size: 36rpx;
+  font-weight: bold;
+  border: none;
+  background: #4caf50;
+  color: white;
+}
+
+/* 计分面板 */
+.score-panel {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 24rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.panel-title {
+  color: #333;
+  font-size: 32rpx;
+  font-weight: bold;
+  display: block;
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+
+.score-input-list {
+  margin-bottom: 30rpx;
+}
+
+.score-input-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #eee;
+}
+
+.score-input-item:last-child {
+  border-bottom: none;
+}
+
+.score-player-info {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.score-player-avatar {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+
+.score-player-avatar-emoji {
+  font-size: 48rpx;
+}
+
+.player-label {
+  color: #333;
+  font-size: 30rpx;
+}
+
+.score-input {
+  background: #f5f5f5;
+  width: 200rpx;
+  height: 72rpx;
+  border-radius: 12rpx;
+  padding: 0 20rpx;
+  font-size: 30rpx;
+  text-align: center;
+}
+
+.panel-buttons {
+  display: flex;
+  gap: 20rpx;
+}
+
+.btn-cancel, .btn-confirm {
+  flex: 1;
+  height: 80rpx;
+  border-radius: 16rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  border: none;
+}
+
+.btn-cancel {
+  background: #e0e0e0;
+  color: #666;
+}
+
+.btn-confirm {
+  background: #4caf50;
+  color: white;
+}
+
+/* 历史记录 */
+.history-section {
+  margin-bottom: 30rpx;
+}
+
+.history-list {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20rpx;
+  padding: 20rpx;
+}
+
+.history-item {
+  padding: 16rpx 0;
+  border-bottom: 1rpx solid rgba(255, 255, 255, 0.1);
+}
+
+.history-item:last-child {
+  border-bottom: none;
+}
+
+.history-time {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 24rpx;
+  display: block;
+}
+
+.history-changes {
+  color: white;
+  font-size: 28rpx;
+  margin-top: 8rpx;
+  display: block;
+}
+
+.btn-home {
+  width: 100%;
+  height: 100rpx;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 50rpx;
+  font-size: 36rpx;
+  font-weight: bold;
+  border: none;
+}

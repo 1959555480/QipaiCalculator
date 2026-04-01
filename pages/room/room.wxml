@@ -1,0 +1,71 @@
+<!--pages/room/room.wxml-->
+<view class="container">
+  <view class="room-header">
+    <text class="room-id">房间号: {{roomId}}</text>
+    <text class="room-status">{{isCreator ? '房主' : '成员'}}</text>
+  </view>
+
+  <!-- 房主开关 -->
+  <view class="settings" wx:if="{{isCreator}}">
+    <view class="setting-row">
+      <text class="setting-label">允许新玩家加入</text>
+      <switch checked="{{allowJoin}}" bindchange="toggleJoin" color="#4caf50"/>
+    </view>
+  </view>
+
+  <view class="players-section">
+    <text class="section-title">玩家列表 ({{players.length}}人)</text>
+    <view class="players-list">
+      <view class="player-card {{item.isOwner ? 'owner' : ''}}" wx:for="{{players}}" wx:key="id">
+        <view class="player-info">
+          <!-- 头像 -->
+          <image class="player-avatar" src="{{item.avatar}}" mode="aspectFill" wx:if="{{item.avatar && item.avatar.startsWith('http')}}"></image>
+          <text class="player-avatar-emoji" wx:else>{{item.avatar}}</text>
+          <!-- 名字 -->
+          <input class="player-name-input" value="{{item.name}}" bindblur="updatePlayerName" data-id="{{item.id}}" wx:if="{{isCreator || !item.isOwner}}"/>
+          <text class="player-name" wx:else>{{item.name}}</text>
+          <text class="owner-badge" wx:if="{{item.isOwner}}">房主</text>
+        </view>
+        <view class="player-score">
+          <text class="score-label">累计</text>
+          <text class="score-value">{{item.score}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="actions">
+    <button class="btn-score" bindtap="showScorePanel">📝 本局计分</button>
+  </view>
+
+  <!-- 计分面板 -->
+  <view class="score-panel" wx:if="{{showScorePanel}}">
+    <text class="panel-title">本局得分</text>
+    <view class="score-input-list">
+      <view class="score-input-item" wx:for="{{players}}" wx:key="id">
+        <view class="score-player-info">
+          <image class="score-player-avatar" src="{{item.avatar}}" mode="aspectFill" wx:if="{{item.avatar && item.avatar.startsWith('http')}}"></image>
+          <text class="score-player-avatar-emoji" wx:else>{{item.avatar}}</text>
+          <text class="player-label">{{item.name}}</text>
+        </view>
+        <input class="score-input" type="number" data-id="{{item.id}}" value="{{item.tempScore}}" bindinput="onScoreInput" placeholder="输入得分"/>
+      </view>
+    </view>
+    <view class="panel-buttons">
+      <button class="btn-cancel" bindtap="hideScorePanel">取消</button>
+      <button class="btn-confirm" bindtap="submitScore">确认提交</button>
+    </view>
+  </view>
+
+  <view class="history-section" wx:if="{{history.length > 0}}">
+    <text class="section-title">本局记录</text>
+    <view class="history-list">
+      <view class="history-item" wx:for="{{history}}" wx:key="index">
+        <text class="history-time">{{item.time}}</text>
+        <text class="history-changes">{{item.changesText}}</text>
+      </view>
+    </view>
+  </view>
+
+  <button class="btn-home" bindtap="goHome">← 返回首页</button>
+</view>
