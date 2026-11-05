@@ -1,0 +1,27 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <!-- 用户信息 -->
+  <view class="user-info">
+    <!-- 头像按钮 -->
+    <button class="user-avatar-btn" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">
+      <image class="user-avatar" src="{{avatarUrl}}" mode="aspectFill" binderror="onAvatarError"></image>
+    </button>
+    <!-- 昵称输入 -->
+    <input class="user-name-input" type="nickname" value="{{userInfo.name}}" placeholder="点击设置昵称" bindblur="onNicknameBlur" bindinput="onNicknameInput"/>
+  </view>
+
+  <!-- 内容区域 -->
+  <view class="content">
+    <view class="button-row">
+      <button class="btn" bindtap="createRoom">🏠 我要开房</button>
+      <!-- 扫码进房暂时隐藏，恢复时把下面这行放开即可 -->
+      <!-- <button class="btn" bindtap="scanQRCode">📷 扫码进房</button> -->
+    </view>
+
+    <!-- 手动输入房号进房 -->
+    <view class="join-row">
+      <input class="room-id-input" type="number" maxlength="4" placeholder="输入 4 位房号" value="{{roomIdInput}}" bindinput="onRoomIdInput" />
+      <button class="btn join-btn" bindtap="joinByRoomId">进房</button>
+    </view>
+  </view>
+</view>

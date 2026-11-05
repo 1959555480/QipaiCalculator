@@ -1,0 +1,86 @@
+<!--pages/room/room.wxml-->
+<view class="container">
+  <!-- 顶部房间信息 -->
+  <view class="room-header">
+    <view class="room-header-left">
+      <text class="room-label">房间号</text>
+      <view class="room-id-row">
+        <text class="room-id">{{roomId}}</text>
+        <view class="copy-btn" catchtap="copyRoomId">复制</view>
+      </view>
+    </view>
+    <view class="room-header-right">
+      <text class="room-count">{{players.length}}</text>
+      <text class="room-count-label">人在座</text>
+    </view>
+  </view>
+
+  <!-- 玩家区 -->
+  <view class="players-section">
+    <scroll-view class="players-scroll" scroll-x="true" enable-flex="true">
+      <view
+        class="player-card {{item.isOwner ? 'owner' : ''}}"
+        wx:for="{{players}}"
+        wx:key="id"
+        bindtap="onPlayerTap"
+        data-id="{{item.id}}"
+        hover-class="player-card-hover"
+        hover-stay-time="80">
+        <text class="owner-tag" wx:if="{{item.isOwner}}">房主</text>
+        <view class="avatar-ring">
+          <image class="player-avatar" src="{{item.avatarSrc}}" mode="aspectFill" wx:if="{{item.showAvatarImage}}" binderror="onAvatarError" data-id="{{item.id}}"></image>
+          <text class="player-avatar-emoji" wx:else>{{item.avatar || '👤'}}</text>
+        </view>
+        <text class="player-name text-ellipsis">{{item.name}}</text>
+        <text class="player-score {{item.score < 0 ? 'negative' : ''}}">{{item.score}}</text>
+      </view>
+    </scroll-view>
+    <view class="tips">
+      <text class="tips-icon">💡</text>
+      <text>点击头像记录得分</text>
+    </view>
+  </view>
+
+  <!-- 得分记录 -->
+  <view class="history-section">
+    <view class="history-header">
+      <text class="history-title">本局记录</text>
+      <text class="history-count" wx:if="{{historyView.length > 0}}">共 {{historyView.length}} 条</text>
+    </view>
+    <scroll-view class="history-list" scroll-y="true" wx:if="{{historyView.length > 0}}">
+      <view class="history-item" wx:for="{{historyView}}" wx:key="index">
+        <view class="history-dot"></view>
+        <text class="history-text">{{item.changesText}}</text>
+        <text class="history-time">{{item.time}}</text>
+      </view>
+    </scroll-view>
+    <view class="empty-history" wx:else>
+      <text class="empty-icon">🀄</text>
+      <text class="empty-text">还没有记录，点击上方头像开始计分</text>
+    </view>
+  </view>
+
+  <!-- 底部退出 -->
+  <view class="bottom-bar">
+    <view class="exit-btn" bindtap="goHome" hover-class="exit-btn-hover">
+      <text class="exit-icon">↩</text>
+      <text>退出房间</text>
+    </view>
+  </view>
+
+  <!-- 计分弹窗 -->
+  <view class="score-modal-mask" wx:if="{{showScoreModal}}" bindtap="closeScoreModal"></view>
+  <view class="score-modal" wx:if="{{showScoreModal}}">
+    <view class="score-modal-header">
+      <text class="modal-title">为 {{selectedPlayer.name}} 记分</text>
+      <text class="modal-sub">给对方加分，自己同步扣除相同分数</text>
+    </view>
+    <view class="score-modal-body">
+      <input class="score-input" type="number" placeholder="请输入分数" bindinput="onScoreInput" value="{{inputScore}}" focus="{{showScoreModal}}"/>
+    </view>
+    <view class="score-modal-footer">
+      <view class="modal-btn cancel" bindtap="closeScoreModal">取消</view>
+      <view class="modal-btn confirm" bindtap="confirmScore">确定</view>
+    </view>
+  </view>
+</view>

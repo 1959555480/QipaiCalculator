@@ -7,7 +7,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#667eea",
-    "navigationBarTitleText": "棋牌计分助手",
+    "navigationBarTitleText": "分分账",
     "navigationBarTextStyle": "white"
   },
   "sitemapLocation": "sitemap.json",

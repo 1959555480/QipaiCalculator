@@ -1,0 +1,14 @@
+# 微信开发者工具本地配置
+project.private.config.json
+.miniprogram/
+
+# 依赖与构建产物
+node_modules/
+miniprogram_npm/
+package-lock.json
+
+# 数据库导出/测试数据
+database_export-*.json
+
+# 历史样式备份
+pages/room/room_backup.wxss
